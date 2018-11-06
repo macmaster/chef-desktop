@@ -1,4 +1,4 @@
-name 'chef-desktop'
+name 'desktop'
 maintainer 'Ronald Macmaster'
 maintainer_email 'ronnymacmaster@gmail.com'
 license 'Apache 2.0'

@@ -1,0 +1,7 @@
+DEPENDENCIES
+  desktop
+    path: .
+    metadata: true
+
+GRAPH
+  desktop (0.1.0)

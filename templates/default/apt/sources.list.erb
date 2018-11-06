@@ -1,0 +1,13 @@
+# sources.list
+# List of APT source distributions
+
+<%
+  node['desktop']['apt']['sources'].each do |name, source|
+    mirror = source['mirror']
+    dist = source['dist']
+    components = source['components'].join(' ')
+%>
+deb <%= "#{mirror} #{dist} #{components}" %>
+deb-src <%= "#{mirror} #{dist} #{components}" %>
+
+<% end %>

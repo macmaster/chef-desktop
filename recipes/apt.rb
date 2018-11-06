@@ -1,5 +1,5 @@
 # Cookbook Name:: desktop
-# Recipe:: default
+# Recipe:: apt
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,4 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include_recipe 'desktop::apt'
+template '/etc/apt/sources.list' do
+  source 'apt/sources.list.erb'
+end
+
+apt_update 'update' do
+  frequency node['desktop']['apt']['period']
+end
