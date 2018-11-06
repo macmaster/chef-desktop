@@ -29,15 +29,20 @@ conf_dir = '/etc/NetworkManager/conf.d'
 file "#{conf_dir}/dns.conf" do
   notifies :restart, 'service[network-manager]'
   mode 0444
-  content <<-EOT
+  content <<~EOT
     [main]
     dns=none
   EOT
 end
 
-# Use Google's DNS Server
+# Use Cloudflare's DNS Server
+# Fallback to Google's DNS Server
 file "/etc/resolv.conf" do
   mode 0644
   manage_symlink_source true
-  content "nameserver 8.8.8.8"
+  content <<~EOT
+    nameserver 1.1.1.1
+    nameserver 1.0.0.1
+  EOT
 end
+
