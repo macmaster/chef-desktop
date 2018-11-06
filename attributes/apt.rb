@@ -25,6 +25,6 @@ end
 # security updates
 default['desktop']['apt']['sources']['security'].tap do |security|
   security['mirror'] = 'http://security.debian.org/debian-security'
-  security['dist'] = 'buster/updates'
-  security['components'] = %w(main)
+  security['dist'] = 'testing/updates'
+  security['components'] = %w(main contrib non-free)
 end

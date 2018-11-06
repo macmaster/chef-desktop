@@ -1,7 +1,5 @@
 # Cookbook Name:: desktop
-# Recipe:: firefox
-#
-# Configures a stable, beta, developer, or nightly firefox build.
+# Recipe:: network_manager
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,11 +13,31 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-## TODO: install stable firefox
-## TODO: install beta firefox
-## TODO: install dev-edition firefox
-## TODO: install nightly firefox
-
-package 'firefox' do
+# Declare and upgrade the service
+package 'network-manager' do
   action :upgrade
+end
+
+service 'network-manager' do
+  action :start
+end
+
+# Configure the service
+conf_dir = '/etc/NetworkManager/conf.d'
+
+# Disable nameserver management
+file "#{conf_dir}/dns.conf" do
+  notifies :restart, 'service[network-manager]'
+  mode 0444
+  content <<-EOT
+    [main]
+    dns=none
+  EOT
+end
+
+# Use Google's DNS Server
+file "/etc/resolv.conf" do
+  mode 0644
+  manage_symlink_source true
+  content "nameserver 8.8.8.8"
 end
