@@ -1,0 +1,8 @@
+{
+  "run_list": [
+    "recipe[desktop::default]",
+    "recipe[desktop::network_manager]",
+    "recipe[desktop::firefox]",
+    "recipe[desktop::vagrant]"
+  ]
+}
