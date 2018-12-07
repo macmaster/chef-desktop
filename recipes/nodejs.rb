@@ -1,5 +1,5 @@
 # Cookbook Name:: desktop
-# Recipe:: default
+# Recipe:: nodejs
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,5 +13,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include_recipe 'desktop::apt'
-include_recipe 'desktop::git'
+packages = %w(
+  npm
+  nodejs
+  nodejs-dev
+  nodejs-doc
+)
+
+packages.map do |name|
+  package name do
+    action :upgrade
+  end
+end
+
+# globally update npm
+execute 'npm install -g npm'
+
+# system-wide npm packages
+npm 'webpack'

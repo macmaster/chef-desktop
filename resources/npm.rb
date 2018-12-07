@@ -1,5 +1,5 @@
 # Cookbook Name:: desktop
-# Recipe:: default
+# Resource:: npm
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,5 +13,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include_recipe 'desktop::apt'
-include_recipe 'desktop::git'
+resource_name :npm
+
+property :package, name_property: true
+property :version, String, default: 'latest'
+
+action :install do
+  package = new_resource.package
+  version = new_resource.version
+  execute "npm install -g #{package}@#{version}"
+end
