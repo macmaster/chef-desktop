@@ -2,7 +2,9 @@
   "run_list": [
     "recipe[desktop::default]",
     "recipe[desktop::network_manager]",
+    "recipe[desktop::vim]",
     "recipe[desktop::firefox]",
-    "recipe[desktop::vagrant]"
+    "recipe[desktop::vagrant]",
+    "recipe[desktop::nodejs]"
   ]
 }
