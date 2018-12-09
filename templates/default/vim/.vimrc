@@ -84,6 +84,7 @@ set notimeout ttimeout ttimeoutlen=200
 " Convert tabs to spaces
 set shiftwidth=2
 set softtabstop=2
+set tabstop=2
 set expandtab
 
 " Redraw the screen
