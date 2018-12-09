@@ -39,7 +39,9 @@ end
 # Use the built in package system for vim 8+
 
 # Plugins are managed completely by chef (root:root)
-directory File.join(VIM_HOME, VIM_PLUGINS)
+directory File.join(VIM_HOME, VIM_PLUGINS) do
+  recursive true
+end
 
 # Install some vim packages
 plugin_repos = %w(
