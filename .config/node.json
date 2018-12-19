@@ -4,6 +4,7 @@
     "recipe[desktop::network_manager]",
     "recipe[desktop::packages]",
     "recipe[desktop::vim]",
+    "recipe[desktop::screen]",
     "recipe[desktop::firefox]",
     "recipe[desktop::nodejs]"
   ]

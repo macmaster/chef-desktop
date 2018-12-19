@@ -1,7 +1,5 @@
 # Cookbook Name:: desktop
-# Recipe:: packages
-#
-# Upgrades various packages
+# Recipe:: screen
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,14 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-packages = %w(
-  acpi
-  screen
-  tcpdump
-)
+package 'screen' do
+  action :upgrade
+end
 
-packages.each do |p|
-  package p do
-    action :upgrade
-  end
+template '/etc/screenrc' do
+  source 'screen/screenrc'
 end

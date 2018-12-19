@@ -57,3 +57,4 @@ plugin_repos.map do |repo|
     repository repo
   end
 end
+

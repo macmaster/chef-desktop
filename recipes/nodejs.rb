@@ -27,7 +27,4 @@ packages.map do |name|
 end
 
 # globally update npm
-execute 'npm install -g npm'
-
-# system-wide npm packages
-npm 'webpack'
+execute 'npm install -g npm@latest'
